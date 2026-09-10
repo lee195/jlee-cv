@@ -1,6 +1,6 @@
 # Jisu Lee CV page
 
-Deployed on Vercel.
+Started from nuxt template. Deployed on Vercel.
 
 ## Setup
 
