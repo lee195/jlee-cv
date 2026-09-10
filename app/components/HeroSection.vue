@@ -211,9 +211,9 @@ defineEmits(['open-contact'])
 }
 
 .stat-label {
-  font-size: 0.8rem;
-  color: var(--text-muted);
-  font-weight: 500;
+  font-size: 0.825rem;
+  color: var(--text-secondary);
+  font-weight: 600;
 }
 
 .hero-actions {

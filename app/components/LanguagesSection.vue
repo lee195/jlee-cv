@@ -183,7 +183,7 @@ const languages = cvData.languages
 }
 
 .progress-title {
-  color: var(--text-muted);
+  color: var(--text-secondary);
 }
 
 .progress-percent {
