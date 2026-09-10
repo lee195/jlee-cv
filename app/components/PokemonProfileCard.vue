@@ -71,7 +71,7 @@
             </div>
             <div class="attack-info">
               <span class="attack-name">TypeScript Blast</span>
-              <span class="attack-desc">Deploys rock-solid, type-safe fullstack architectures.</span>
+              <span class="attack-desc">Generic self-promotional jargon word salad.</span>
             </div>
             <span class="attack-damage">120</span>
           </div>
@@ -83,7 +83,7 @@
             </div>
             <div class="attack-info">
               <span class="attack-name">Fullstack Overdrive</span>
-              <span class="attack-desc">Solves complex product challenges in record time.</span>
+              <span class="attack-desc">Do ALL the things.</span>
             </div>
             <span class="attack-damage">200</span>
           </div>
@@ -97,7 +97,7 @@
           </div>
           <div class="footer-stat">
             <span class="stat-title">resistance</span>
-            <span class="stat-val">Refactoring -30</span>
+            <span class="stat-val">Resting -30</span>
           </div>
           <div class="footer-stat">
             <span class="stat-title">retreat</span>
@@ -107,7 +107,7 @@
 
         <div class="card-rarity-bar">
           <span>Illust. Jisu Lee • FX: simeydotme</span>
-          <span>195/151 ★★★ Secret Rare</span>
+          <span>195/386 ★★★ Secret Rare</span>
         </div>
       </div>
 
