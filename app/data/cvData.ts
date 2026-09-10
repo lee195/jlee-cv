@@ -75,10 +75,10 @@ export const cvData = {
       type: "Full-time",
       description: "Technical lead on new automation platform for product demo environment provisioning started from a technical spike.",
       highlights: [
-        "Reduced time from user interaction to fully provisioned demo from 1-2 hours to 15 minutes. Success rate from 80% to 95%.",
-        "Created template creation engine to build fully customized Atlassian cloud instance templates.",
-        "Optimized database architecture and data synchronization reducing operational cost by 60%.",
-        "Communicated with internal customers and stakeholders to understand their needs and requirements and translated them into technical specifications."
+        "Reduced time from user interaction to fully provisioned demo from 1-2 hours to 15 minutes. Success rate from 80% to 95%",
+        "Created template creation engine to build fully customized Atlassian cloud instance templates",
+        "Optimized database architecture and data synchronization reducing operational cost by 60%",
+        "Communicated with internal customers and stakeholders to understand their needs and requirements and translated them into technical specifications"
       ],
       technologies: ["TypeScript", "React", "Vercel", "GCP", "Docker", "PostgreSQL"]
     },
@@ -91,10 +91,10 @@ export const cvData = {
       type: "Full-time",
       description: "Responsible for ISO27001 relevant guidelines and processes in software development.",
       highlights: [
-        "Worked on security relevant guidelines and processes in software development for ISO27001 certification.",
-        "Managed Bugcrowd program and derived security standards from submissions reducing program costs by 70%.",
-        "Headed and organized Security Champion program with members from all development teams.",
-        "Created and organized internal security workshops and created training plans based on external security training platforms."
+        "Worked on security relevant guidelines and processes in software development for ISO27001 certification",
+        "Managed Bugcrowd program and derived security standards from submissions reducing program costs by 70%",
+        "Headed and organized Security Champion program with members from all development teams",
+        "Created and organized internal security workshops and created training plans based on external security training platforms"
       ],
       technologies: ["Jira", "Confluence", "OWASP", "Bugcrowd", "Security Champions"]
     },
