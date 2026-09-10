@@ -10,19 +10,6 @@
       <p class="section-subtitle">Key applications and open-source software engineered for high performance</p>
     </div>
 
-    <!-- Category Filter Tabs (No Print) -->
-    <div class="filter-tabs no-print">
-      <button 
-        v-for="cat in categories" 
-        :key="cat" 
-        @click="activeCategory = cat"
-        class="filter-btn"
-        :class="{ active: activeCategory === cat }"
-      >
-        {{ cat }}
-      </button>
-    </div>
-
     <!-- Projects Grid -->
     <div class="projects-grid">
       <div v-for="proj in filteredProjects" :key="proj.id" class="glass-card project-card print-break-inside-avoid">
