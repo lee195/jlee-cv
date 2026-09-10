@@ -1,6 +1,6 @@
-# Nuxt Minimal Starter
+# Jisu Lee CV page
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+Deployed on Vercel.
 
 ## Setup
 
