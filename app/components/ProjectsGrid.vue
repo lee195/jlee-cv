@@ -122,11 +122,15 @@ const filteredProjects = computed(() => {
 }
 
 .category-badge {
-  font-size: 0.75rem;
-  font-weight: 700;
+  font-size: 0.775rem;
+  font-weight: 800;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: var(--accent-cyan);
+  letter-spacing: 0.06em;
+  padding: 0.25rem 0.65rem;
+  border-radius: var(--radius-sm);
+  background: #0c4a6e;
+  color: #7dd3fc;
+  border: 1px solid #0284c7;
 }
 
 .featured-tag {

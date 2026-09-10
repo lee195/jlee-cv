@@ -336,14 +336,14 @@ const glareStyle = computed(() => {
   position: absolute;
   top: 4px;
   left: 6px;
-  background: rgba(15, 23, 42, 0.8);
-  color: #38bdf8;
+  background: #0f172a;
+  color: #7dd3fc;
   font-size: 0.55rem;
-  font-weight: 800;
+  font-weight: 900;
   padding: 1px 5px;
   border-radius: 3px;
   letter-spacing: 0.05em;
-  border: 1px solid rgba(56, 189, 248, 0.4);
+  border: 1px solid #0284c7;
 }
 
 .art-avatar {

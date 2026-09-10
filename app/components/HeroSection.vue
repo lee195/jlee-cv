@@ -114,13 +114,13 @@ defineEmits(['open-contact'])
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.25rem 0.75rem;
+  padding: 0.35rem 0.85rem;
   font-size: 0.825rem;
-  font-weight: 600;
+  font-weight: 700;
   border-radius: var(--radius-full);
-  background: rgba(16, 185, 129, 0.12);
-  color: var(--accent-emerald);
-  border: 1px solid rgba(16, 185, 129, 0.3);
+  background: #064e3b;
+  color: #6ee7b7;
+  border: 1px solid #10b981;
   margin-bottom: 0.75rem;
   align-self: flex-start;
 }
