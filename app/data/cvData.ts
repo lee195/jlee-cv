@@ -131,7 +131,7 @@ export const cvData = {
     {
       id: "proj-1",
       title: "Ember",
-      category: "Desktop & Mobile",
+      category: "Desktop",
       description: "Your Claude Code usage at a glance, a portable profile and config playground.",
       highlights: [
         "Deterministic profile descriptors",
@@ -144,6 +144,18 @@ export const cvData = {
     },
     {
       id: "proj-2",
+      title: "Fresh Eyes",
+      category: "Browser Extension",
+      description: "A browser extension that reacts to your web app the way a non-technical user would.",
+      highlights: [
+        "Persona driven comments, feedback and verdicts",
+        "Feedback gets pinned to the elements that caused them",
+      ],
+      technologies: ["npm", "Vue 3", "TypeScript", "Vite", "Tauri"],
+      github: "https://github.com/lee195/fresh-eyes",
+    },
+    {
+      id: "proj-3",
       title: "Flint (WIP)",
       category: "Desktop",
       description: "App for macOS that gives non-technical users working local AI with zero dev-tool gates",
@@ -154,18 +166,6 @@ export const cvData = {
       ],
       technologies: ["deno", "Vue 3", "TypeScript", "Vite", "Tauri"],
       github: "https://github.com/lee195/flint",
-    },
-    {
-      id: "proj-3",
-      title: "Fresh Eyes (WIP)",
-      category: "Browser Extension",
-      description: "A browser extension that reacts to your web app the way a non-technical user would.",
-      highlights: [
-        "Persona driven comments, feedback and verdicts",
-        "Feedback gets pinned to the elements that caused them",
-      ],
-      technologies: ["npm", "Vue 3", "TypeScript", "Vite", "Tauri"],
-      github: "https://github.com/lee195/fresh-eyes",
     }
   ] as Project[],
   education: [
