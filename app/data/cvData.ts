@@ -146,10 +146,12 @@ export const cvData = {
       id: "proj-2",
       title: "Fresh Eyes",
       category: "Browser Extension",
-      description: "A browser extension that reacts to your web app the way a non-technical user would.",
+      description: "LLM-driven browser extension that reacts to your web app the way a non-technical user would.",
       highlights: [
         "Persona driven comments, feedback and verdicts",
-        "Feedback gets pinned to the elements that caused them",
+        "Add and customize personas as needed",
+        "User provided LLM endpoint and API keys, no vendor lock-in, local ready",
+        "Feedback gets pinned to the elements that caused them"
       ],
       technologies: ["npm", "Vue 3", "TypeScript", "Vite", "Tauri"],
       github: "https://github.com/lee195/fresh-eyes",
