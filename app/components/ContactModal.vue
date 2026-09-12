@@ -1,15 +1,27 @@
 <template>
   <Teleport to="body">
-    <div v-if="isOpen" class="modal-overlay no-print" @click.self="$emit('close')">
-      <div class="glass-card modal-box animate-fade-in">
-        <button @click="$emit('close')" class="close-btn" title="Close">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <div
+      v-if="isOpen"
+      class="modal-overlay no-print"
+      @click.self="$emit('close')"
+      @keydown="handleKeydown"
+    >
+      <div
+        ref="modalBox"
+        class="glass-card modal-box animate-fade-in"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="modal-title"
+        tabindex="-1"
+      >
+        <button @click="$emit('close')" class="close-btn" aria-label="Close contact modal">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
             <line x1="18" y1="6" x2="6" y2="18"></line>
             <line x1="6" y1="6" x2="18" y2="18"></line>
           </svg>
         </button>
 
-        <h2 class="modal-title">Get In Touch</h2>
+        <h2 id="modal-title" class="modal-title">Get In Touch</h2>
         <p class="modal-sub">Let's discuss opportunities, projects, or collaborations.</p>
 
         <div class="contact-quick">
@@ -23,56 +35,72 @@
             </div>
           </div>
         </div>
-<!-- 
-        <form @submit.prevent="handleSubmit" class="contact-form">
-          <div class="form-group">
-            <label>Your Name</label>
-            <input v-model="form.name" type="text" placeholder="John Doe" required class="form-input" />
-          </div>
-
-          <div class="form-group">
-            <label>Your Email</label>
-            <input v-model="form.email" type="email" placeholder="john@example.com" required class="form-input" />
-          </div>
-
-          <div class="form-group">
-            <label>Message</label>
-            <textarea v-model="form.message" rows="4" placeholder="Hi Jisu, I'd like to discuss a project..." required class="form-input"></textarea>
-          </div>
-
-          <div class="modal-actions">
-            <button type="button" @click="$emit('close')" class="btn btn-secondary">Cancel</button>
-            <button type="submit" class="btn btn-primary" :disabled="sending">
-              {{ sending ? 'Sending...' : 'Send Message' }}
-            </button>
-          </div>
-        </form>
-
-        <div v-if="sent" class="success-toast">
-          ✓ Message sent successfully! I will reply to you shortly.
-        </div> -->
       </div>
     </div>
   </Teleport>
 </template>
 
 <script setup lang="ts">
-import { ref, reactive } from 'vue'
+import { ref, reactive, watch, nextTick } from 'vue'
 import { cvData } from '~/data/cvData'
 
-defineProps<{ isOpen: boolean }>()
+const props = defineProps<{ isOpen: boolean }>()
 const emit = defineEmits(['close'])
 
 const email = cvData.personal.email
 const copied = ref(false)
 const sending = ref(false)
 const sent = ref(false)
+const modalBox = ref<HTMLElement | null>(null)
 
 const form = reactive({
   name: '',
   email: '',
   message: ''
 })
+
+// Focus the modal container when it opens, restore focus to trigger on close
+let previouslyFocused: HTMLElement | null = null
+
+watch(() => props.isOpen, async (isOpen) => {
+  if (isOpen) {
+    previouslyFocused = document.activeElement as HTMLElement
+    await nextTick()
+    modalBox.value?.focus()
+  } else {
+    previouslyFocused?.focus()
+  }
+})
+
+// Focus trap and Escape key handler
+function handleKeydown(e: KeyboardEvent) {
+  if (e.key === 'Escape') {
+    emit('close')
+    return
+  }
+
+  if (e.key !== 'Tab' || !modalBox.value) return
+
+  const focusable = modalBox.value.querySelectorAll<HTMLElement>(
+    'a[href], button:not([disabled]), input, textarea, select, [tabindex]:not([tabindex="-1"])'
+  )
+  if (!focusable.length) return
+
+  const first = focusable[0]
+  const last = focusable[focusable.length - 1]
+
+  if (e.shiftKey) {
+    if (document.activeElement === first && last) {
+      e.preventDefault()
+      last.focus()
+    }
+  } else {
+    if (document.activeElement === last && first) {
+      e.preventDefault()
+      first.focus()
+    }
+  }
+}
 
 async function copyEmail() {
   await navigator.clipboard.writeText(email)
@@ -204,7 +232,8 @@ function handleSubmit() {
 }
 
 .form-input:focus {
-  outline: none;
+  outline: 2px solid var(--accent-cyan);
+  outline-offset: 1px;
   border-color: var(--accent-cyan);
 }
 

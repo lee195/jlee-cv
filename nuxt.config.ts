@@ -5,6 +5,7 @@ export default defineNuxtConfig({
   css: ['~/assets/css/main.css'],
   app: {
     head: {
+      htmlAttrs: { lang: 'en' },
       title: 'Jisu Lee — Senior Full Stack Software Engineer',
       meta: [
         { charset: 'utf-8' },

@@ -2,7 +2,7 @@
   <section id="languages" class="section-container">
     <div class="section-header">
       <h2 class="section-title">
-        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="gradient-text">
+        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="gradient-text" aria-hidden="true" focusable="false">
           <circle cx="12" cy="12" r="10"></circle>
           <line x1="2" y1="12" x2="22" y2="12"></line>
           <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
@@ -23,14 +23,14 @@
             <!-- Render SVG Flag for reliable cross-platform rendering -->
             <div class="lang-flag-box" :title="lang.name">
               <!-- German Flag -->
-              <svg v-if="lang.name === 'German'" class="flag-svg" viewBox="0 0 640 480">
+              <svg v-if="lang.name === 'German'" class="flag-svg" viewBox="0 0 640 480" aria-hidden="true" focusable="false">
                 <rect width="640" height="160" fill="#262626"/>
                 <rect y="160" width="640" height="160" fill="#DA291C"/>
                 <rect y="320" width="640" height="160" fill="#FFC72C"/>
               </svg>
 
               <!-- UK / English Flag -->
-              <svg v-else-if="lang.name === 'English'" class="flag-svg" viewBox="0 0 60 30">
+              <svg v-else-if="lang.name === 'English'" class="flag-svg" viewBox="0 0 60 30" aria-hidden="true" focusable="false">
                 <rect width="60" height="30" fill="#012169"/>
                 <path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" stroke-width="6"/>
                 <path d="M0,0 L60,30 M60,0 L0,30" stroke="#C8102E" stroke-width="2"/>
@@ -39,7 +39,7 @@
               </svg>
 
               <!-- Korean Flag -->
-              <svg v-else-if="lang.name === 'Korean'" class="flag-svg" viewBox="0 0 900 600">
+              <svg v-else-if="lang.name === 'Korean'" class="flag-svg" viewBox="0 0 900 600" aria-hidden="true" focusable="false">
                 <rect width="900" height="600" fill="#ffffff"/>
                 <g transform="translate(450,300)">
                   <path d="M-150,0 A150,150 0 0,0 150,0 A75,75 0 0,0 0,0 A75,75 0 0,1 -150,0" fill="#CD2E3A"/>
@@ -80,11 +80,18 @@
         <div class="lang-progress-box">
           <div class="progress-labels">
             <span class="progress-title">Proficiency</span>
-            <span class="progress-percent">{{ lang.proficiency }}%</span>
+            <span class="progress-percent" aria-hidden="true">{{ lang.proficiency }}%</span>
           </div>
-          <div class="progress-bar-bg">
-            <div 
-              class="progress-bar-fill" 
+          <div
+            class="progress-bar-bg"
+            role="progressbar"
+            :aria-valuenow="lang.proficiency"
+            aria-valuemin="0"
+            aria-valuemax="100"
+            :aria-label="lang.name + ' proficiency: ' + lang.proficiency + '%'"
+          >
+            <div
+              class="progress-bar-fill"
               :style="{ width: lang.proficiency + '%' }"
             ></div>
           </div>

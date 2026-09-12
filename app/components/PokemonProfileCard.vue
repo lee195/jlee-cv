@@ -1,11 +1,7 @@
 <template>
-  <a 
-    href="https://github.com/simeydotme/pokemon-cards-css"
-    target="_blank"
-    rel="noopener noreferrer"
+  <div
     ref="cardContainer"
     class="pokemon-card-container"
-    title="Holographic Card Effect by simeydotme/pokemon-cards-css (Click to view GitHub repo)"
     @mousemove="handleMouseMove"
     @mouseleave="handleMouseLeave"
     @mouseenter="handleMouseEnter"
@@ -25,19 +21,19 @@
         <!-- Top Bar: Name, HP, Type -->
         <div class="card-header">
           <div class="card-stage-name">
-            <span class="stage-tag">BASIC</span>
+            <span class="stage-tag" aria-hidden="true">BASIC</span>
             <span class="card-name">{{ personal.name }}</span>
           </div>
           <div class="card-hp-type">
-            <span class="hp-label">HP</span>
-            <span class="hp-value">700</span>
-            <span class="type-icon" title="Steel / Electric Type">⚙️</span>
+            <span class="hp-label" aria-hidden="true">HP</span>
+            <span class="hp-value" aria-hidden="true">700</span>
+            <span class="type-icon" aria-hidden="true">⚙️</span>
           </div>
         </div>
 
         <!-- Artwork Window (Profile Image & Frame) -->
         <div class="card-art-frame">
-          <div class="art-badge">LVL 32 • SR. DEV</div>
+          <div class="art-badge" aria-hidden="true">LVL 32 • SR. DEV</div>
           <div class="art-avatar">
             <img 
               v-if="personal.avatar && !imageError" 
@@ -46,13 +42,13 @@
               class="avatar-img"
               @error="imageError = true"
             />
-            <div v-else class="avatar-portrait">JL</div>
+            <div v-else class="avatar-portrait" aria-hidden="true">JL</div>
           </div>
         </div>
-        <div class="art-caption">NO. 195 Fullstack Engineer</div>
+        <div class="art-caption" aria-hidden="true">NO. 195 Fullstack Engineer</div>
 
         <!-- Ability Section -->
-        <div class="card-section ability-section">
+        <div class="card-section ability-section" aria-hidden="true">
           <div class="ability-title">
             <span class="ability-type">Ability</span>
             <span class="ability-name">AI-Driven Engineering</span>
@@ -63,7 +59,7 @@
         </div>
 
         <!-- Attacks Section -->
-        <div class="card-section attack-section">
+        <div class="card-section attack-section" aria-hidden="true">
           <div class="attack-row">
             <div class="attack-cost">
               <span class="energy-icon">⚡</span>
@@ -90,7 +86,7 @@
         </div>
 
         <!-- Card Footer Info -->
-        <div class="card-footer">
+        <div class="card-footer" aria-hidden="true">
           <div class="footer-stat">
             <span class="stat-title">weakness</span>
             <span class="stat-val">Bad Jokes x2</span>
@@ -106,18 +102,24 @@
         </div>
 
         <div class="card-rarity-bar">
-          <span>Illust. Jisu Lee • FX: simeydotme</span>
-          <span>195/386 ★★★ Secret Rare</span>
+          <span aria-hidden="true">Illust. Jisu Lee • FX: simeydotme</span>
+          <a
+            href="https://github.com/simeydotme/pokemon-cards-css"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="card-attribution-link"
+            aria-label="Holographic card effect by simeydotme on GitHub (opens in new tab)"
+          >195/386 ★★★ Secret Rare</a>
         </div>
       </div>
 
       <!-- Simeydotme Holo Foil Shine Layer -->
-      <div class="card-shine" :style="shineStyle"></div>
+      <div class="card-shine" :style="shineStyle" aria-hidden="true"></div>
 
       <!-- Glare Spotlight Reflection Layer -->
-      <div class="card-glare" :style="glareStyle"></div>
+      <div class="card-glare" :style="glareStyle" aria-hidden="true"></div>
     </div>
-  </a>
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -215,7 +217,7 @@ const glareStyle = computed(() => {
   height: 420px;
   perspective: 1000px;
   margin: 0 auto;
-  cursor: pointer;
+  cursor: default;
   user-select: none;
   touch-action: manipulation;
 }
@@ -501,7 +503,7 @@ const glareStyle = computed(() => {
   font-size: 0.475rem;
   font-weight: 700;
   text-transform: uppercase;
-  color: #64748b;
+  color: #334155;
 }
 
 .stat-val {
@@ -539,5 +541,15 @@ const glareStyle = computed(() => {
   mix-blend-mode: overlay;
   transition: opacity 0.3s ease;
   border-radius: 16px;
+}
+
+.card-attribution-link {
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.card-attribution-link:hover {
+  text-decoration: underline;
 }
 </style>
