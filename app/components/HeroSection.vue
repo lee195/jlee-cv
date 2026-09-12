@@ -65,7 +65,24 @@
         <!-- Pokemon Card Profile Column -->
         <div class="hero-card-col">
           <PokemonProfileCard />
-          <a href="https://github.com/simeydotme/pokemon-cards-css" target="_blank" rel="noopener noreferrer" class="card-attribution-link" aria-label="Holographic card effect by simeydotme on GitHub (opens in new tab)">Pokemon card effect CSS by simeydotme</a>
+          <a 
+            href="https://github.com/simeydotme/pokemon-cards-css" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            class="card-attribution-link" 
+            aria-label="Holographic card effect by simeydotme on GitHub (opens in new tab)"
+          >
+            Pokemon card effect CSS by simeydotme
+          </a>
+          <a
+            href="https://www.pokecardgenerator.com" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            class="card-attribution-link" 
+            aria-label="Pokemon card generator (opens in new tab)"
+          >
+            Pokemon card generator
+          </a>
         </div>
       </div>
     </div>
@@ -110,12 +127,11 @@ defineEmits(['open-contact'])
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 0.5rem;
 }
 
 .hero-card-col a {
   font-size: 0.875rem;
-  color: var(--text-secondary);
+  color: var(--text-primary);
   text-decoration: none;
   transition: color var(--transition-fast);
 }
