@@ -8,7 +8,7 @@
         </svg>
         Work Experience
       </h2>
-      <p class="section-subtitle">Track record of building scalable web platforms and engineering leadership</p>
+      <p class="section-subtitle">Atlassian apps for DC and Cloud, web and mobile apps. Security ownership and technical lead.</p>
     </div>
 
     <div class="timeline-list">
