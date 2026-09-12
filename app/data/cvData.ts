@@ -61,9 +61,9 @@ export const cvData = {
   },
   stats: [
     { label: "years experience", value: "7+" },
-    { label: "docs complaints", value: "a lot of" },
-    { label: "cups of coffee", value: "9000+" },
-    { label: "bad jokes experienced", value: "too many" }
+    { label: "projects", value: "4" },
+    { label: "cups of coffee", value: String(250 * 2 * 7) + "+" },
+    { label: "bad jokes", value: "many" }
   ],
   experiences: [
     {
