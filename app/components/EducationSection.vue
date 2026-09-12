@@ -16,7 +16,6 @@
         <div v-for="(edu, index) in education" :key="index" class="glass-card edu-card print-break-inside-avoid">
           <div class="edu-top">
             <h3 class="edu-degree">{{ edu.degree }}</h3>
-            <span class="badge">{{ edu.period }}</span>
           </div>
           <p class="edu-institution">{{ edu.institution }}</p>
           <p class="edu-details">{{ edu.details }}</p>
