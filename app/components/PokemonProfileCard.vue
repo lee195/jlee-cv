@@ -227,26 +227,18 @@ const glareStyle = computed(() => {
   width: 100%;
   height: 100%;
   border-radius: 16px;
-  background: #1e293b;
+  background: #ffffff;
   border: 8px solid #fbbf24;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(251, 191, 36, 0.3);
   transform-style: preserve-3d;
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  padding: 10px;
   color: #0f172a;
 }
 
 .pokemon-card.is-active {
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 30px rgba(56, 189, 248, 0.5);
-}
-
-.card-background {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, #fef08a 0%, #fde047 30%, #eab308 100%);
-  z-index: 1;
 }
 
 .card-content {
@@ -256,10 +248,7 @@ const glareStyle = computed(() => {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background: rgba(255, 255, 255, 0.85);
-  border-radius: 8px;
-  padding: 8px;
-  border: 1px solid rgba(0, 0, 0, 0.15);
+  padding: 8px 8px 4px 8px;
 }
 
 /* Header */
@@ -393,10 +382,8 @@ const glareStyle = computed(() => {
 
 /* Ability */
 .ability-section {
-  background: rgba(241, 245, 249, 0.9);
   border-radius: 4px;
   padding: 5px 6px;
-  border-left: 3px solid #dc2626;
   margin-top: 4px;
 }
 
@@ -444,7 +431,6 @@ const glareStyle = computed(() => {
   background: rgba(255, 255, 255, 0.7);
   padding: 4px 6px;
   border-radius: 4px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
 }
 
 .attack-cost {
