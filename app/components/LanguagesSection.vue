@@ -188,7 +188,7 @@ const languages = cvData.languages
 
 .progress-percent {
   color: var(--accent-cyan);
-  font-family: var(--font-mono);
+  font-family: var(--font-sans);
 }
 
 .progress-bar-bg {
