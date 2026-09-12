@@ -65,6 +65,7 @@
         <!-- Pokemon Card Profile Column -->
         <div class="hero-card-col">
           <PokemonProfileCard />
+          <a href="https://github.com/simeydotme/pokemon-cards-css" target="_blank" rel="noopener noreferrer" class="card-attribution-link" aria-label="Holographic card effect by simeydotme on GitHub (opens in new tab)">Pokemon card effect CSS by simeydotme</a>
         </div>
       </div>
     </div>
@@ -106,8 +107,21 @@ defineEmits(['open-contact'])
 
 .hero-card-col {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 0.5rem;
+}
+
+.hero-card-col a {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.hero-card-col a:hover {
+  color: var(--accent-cyan);
 }
 
 .status-badge {
