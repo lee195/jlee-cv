@@ -48,6 +48,7 @@
 <script setup lang="ts">
 import { ref, nextTick, onMounted, onBeforeUnmount } from 'vue'
 import { cvData } from '~/data/cvData'
+import { canPlayTetris } from '~/composables/useTetrisTrigger'
 
 const emit = defineEmits<{ 'open-contact': [] }>()
 
@@ -161,6 +162,15 @@ const COMMANDS: Record<string, { help: string; run: (args: string[]) => void | P
     run: () => {
       window.open(cvData.personal.github, '_blank', 'noopener')
       ok(`opened ${cvData.personal.github}`)
+    },
+  },
+  tetris: {
+    help: 'play a round',
+    run: () => {
+      if (!canPlayTetris()) return err('tetris: needs a keyboard and a bigger screen')
+      close()
+      window.dispatchEvent(new Event('cv:open-tetris'))
+      ok('launching tetris…')
     },
   },
   coffee: {

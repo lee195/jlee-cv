@@ -37,6 +37,9 @@
     <!-- Contact Modal -->
     <ContactModal :is-open="isContactOpen" @close="isContactOpen = false" />
 
+    <!-- Tetris easter egg: lazy chunk + game files, fetched only when triggered -->
+    <LazyTetrisModal v-if="tetrisOpen" @close="tetrisOpen = false" />
+
     <!-- ⌘K / Ctrl+K terminal -->
     <CommandTerminal ref="terminal" @open-contact="isContactOpen = true" />
   </div>
@@ -52,11 +55,13 @@ import EducationSection from '~/components/EducationSection.vue'
 import LanguagesSection from '~/components/LanguagesSection.vue'
 import ContactModal from '~/components/ContactModal.vue'
 import CommandTerminal from '~/components/CommandTerminal.vue'
+import { useTetrisTrigger } from '~/composables/useTetrisTrigger'
 
 const isContactOpen = ref(false)
 const currentYear = new Date().getFullYear()
 const terminal = ref<InstanceType<typeof CommandTerminal> | null>(null)
 const shortcut = ref('Ctrl K')
+const { open: tetrisOpen } = useTetrisTrigger()
 
 onMounted(() => {
   if (/Mac|iPhone|iPad/.test(navigator.platform)) shortcut.value = '⌘K'

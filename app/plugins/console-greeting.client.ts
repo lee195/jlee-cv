@@ -9,8 +9,9 @@ export default defineNuxtPlugin(() => {
     '%cYou are exactly who I built this part for.\n\n' +
       '%c1.%c Press ⌘K / Ctrl+K anywhere on the page for a terminal.\n' +
       '%c2.%c A flag is hidden in this page\'s <head>. It\'s encoded, not encrypted.\n' +
-      '   Found it? Submit it in the terminal: submit JL{...}\n\n' +
+      '   Found it? Submit it in the terminal: submit JL{...}\n' +
+      '%c3.%c Old-school gamers know a certain code. ↑↑↓↓←→←→BA\n\n' +
       '%cThe source is on GitHub too: https://github.com/lee195/jlee-cv',
-    body, accent, body, accent, body, body
+    body, accent, body, accent, body, accent, body, body
   )
 })
