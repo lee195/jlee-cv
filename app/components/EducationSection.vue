@@ -139,4 +139,29 @@ const certifications = cvData.certifications
     grid-template-columns: 1fr;
   }
 }
+
+@media print {
+  .education-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+  }
+  .edu-card,
+  .cert-card {
+    padding: 0 !important;
+  }
+  .edu-degree,
+  .cert-title {
+    font-size: 10.5pt;
+  }
+  .edu-institution,
+  .edu-details,
+  .cert-issuer {
+    font-size: 9pt;
+  }
+  .cert-icon-box {
+    width: 22px;
+    height: 22px;
+    box-shadow: none;
+  }
+}
 </style>

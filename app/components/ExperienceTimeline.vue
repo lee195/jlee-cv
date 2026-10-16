@@ -189,4 +189,65 @@ const experiences = cvData.experiences
     flex-direction: column;
   }
 }
+
+@media print {
+  .timeline-list {
+    gap: 0;
+  }
+  .timeline-marker {
+    display: none;
+  }
+  .timeline-item {
+    display: block;
+  }
+  .exp-card {
+    break-inside: auto !important;
+    padding: 0.45rem 0 0 !important;
+    margin-bottom: 0.45rem !important;
+    border-top: 0.5pt solid #d1d5db !important;
+    border-radius: 0 !important;
+  }
+  .timeline-item:first-child .exp-card {
+    border-top: none !important;
+    padding-top: 0 !important;
+  }
+  .exp-header {
+    flex-wrap: nowrap;
+    gap: 0.75rem;
+    margin-bottom: 0.25rem;
+    break-inside: avoid;
+    break-after: avoid;
+  }
+  .exp-role {
+    font-size: 11.5pt;
+  }
+  .exp-company-group {
+    font-size: 9pt;
+    margin-top: 0.05rem;
+  }
+  .exp-description {
+    font-size: 9.5pt;
+    line-height: 1.4;
+    margin-bottom: 0.3rem;
+  }
+  .exp-highlights {
+    gap: 0.15rem;
+    margin-bottom: 0.35rem;
+  }
+  .exp-highlights li {
+    font-size: 9.5pt;
+    gap: 0.4rem;
+    line-height: 1.35;
+  }
+  .check-icon {
+    width: 11px;
+    height: 11px;
+    margin-top: 0.15rem;
+  }
+  .exp-tags {
+    gap: 0.25rem;
+    border-top: none;
+    padding-top: 0;
+  }
+}
 </style>

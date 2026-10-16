@@ -222,4 +222,54 @@ onBeforeUnmount(() => window.removeEventListener('cv:open-project', onOpenEvent)
   background: var(--accent-cyan);
   color: #ffffff;
 }
+
+@media print {
+  .projects-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.9rem;
+  }
+  .project-card {
+    padding: 0 !important;
+  }
+  .project-top {
+    margin-bottom: 0.25rem;
+  }
+  .category-badge {
+    font-size: 7pt;
+    padding: 0.05rem 0.4rem;
+    background: transparent;
+    color: #075985;
+    border-color: #075985;
+  }
+  .project-title {
+    font-size: 11pt;
+    margin-bottom: 0.2rem;
+  }
+  .project-desc {
+    font-size: 9pt;
+    line-height: 1.35;
+    margin-bottom: 0.35rem;
+  }
+  .project-highlights {
+    flex-grow: 0;
+    gap: 0.15rem;
+    margin-bottom: 0.4rem;
+  }
+  .hl-item {
+    font-size: 8.5pt;
+    line-height: 1.3;
+  }
+  .hl-bullet {
+    margin-top: 0.35rem;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+  .project-footer {
+    border-top: none;
+    padding-top: 0;
+  }
+  .project-tech {
+    gap: 0.2rem;
+  }
+}
 </style>

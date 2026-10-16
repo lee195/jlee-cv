@@ -4,6 +4,7 @@
       <div class="hero-layout">
         <!-- Hero Details Column -->
         <div class="hero-details">
+          <img :src="personal.avatar" alt="" width="104" height="104" class="print-photo print-only">
           <div class="status-badge" aria-hidden="true">
             <span class="pulse-dot"></span>
             <span>{{ personal.status }}</span>
@@ -59,6 +60,9 @@
               </svg>
               <span>{{ personal.email }}</span>
             </a>
+            <span v-if="personal.github" class="meta-item print-only">
+              {{ personal.github.replace(/^https?:\/\//, '') }}
+            </span>
           </div>
 
           <p class="hero-bio">
@@ -321,6 +325,50 @@
     .social-group {
       margin-left: 0;
       justify-content: center;
+    }
+  }
+
+  @media print {
+    .hero-section {
+      padding: 0 0 0.4rem;
+    }
+    .hero-card {
+      padding: 0 !important;
+      overflow: visible;
+    }
+    .hero-layout {
+      display: block;
+    }
+    .hero-card-col {
+      display: none;
+    }
+    .print-photo {
+      float: right;
+      width: 28mm;
+      height: 28mm;
+      object-fit: cover;
+      border-radius: 6px;
+      margin: 0 0 0.5rem 1rem;
+    }
+    .hero-details {
+      display: block;
+    }
+    .hero-name {
+      font-size: 24pt;
+    }
+    .hero-title {
+      font-size: 13pt;
+      margin-bottom: 0.4rem;
+    }
+    .hero-meta {
+      gap: 0.3rem 1rem;
+      font-size: 9pt;
+      margin-bottom: 0.5rem;
+    }
+    .hero-bio {
+      font-size: 10pt;
+      line-height: 1.45;
+      margin-bottom: 0.6rem;
     }
   }
 </style>

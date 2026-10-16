@@ -295,17 +295,61 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* PRINT STYLES - Clean Standard CV Output */
+/* Elements that exist only on paper (e.g. the small photo, the GitHub URL) */
+@media screen {
+  .print-only {
+    display: none !important;
+  }
+}
+
 @media print {
   @page {
-    margin: 15mm 15mm 15mm 15mm;
+    margin: 12mm 14mm;
     size: A4 portrait;
   }
 
+  /* Paper is always light, whatever theme the screen was in */
+  :root,
+  :root[data-theme="light"] {
+    --bg-primary: #ffffff;
+    --bg-secondary: #ffffff;
+    --bg-card: #ffffff;
+    --bg-card-hover: #ffffff;
+    --bg-glass: #ffffff;
+
+    --border-color: #d1d5db;
+    --border-accent: #94a3b8;
+
+    --text-primary: #0f172a;
+    --text-secondary: #1e293b;
+    --text-muted: #334155;
+    --text-inverse: #ffffff;
+
+    --accent-cyan: #075985;
+    --accent-teal: #115e59;
+    --accent-emerald: #065f46;
+    --accent-purple: #6b21a8;
+    --accent-indigo: #3730a3;
+
+    --gradient-accent: linear-gradient(135deg, #075985 0%, #115e59 50%, #6b21a8 100%);
+    --gradient-glow: none;
+
+    --shadow-sm: none;
+    --shadow-md: none;
+    --shadow-glow: none;
+  }
+
+  html,
   body {
     background: #ffffff !important;
-    color: #111827 !important;
-    font-size: 11pt;
-    line-height: 1.4;
+    color: #0f172a !important;
+    font-size: 10pt;
+    line-height: 1.35;
+  }
+
+  body::before,
+  body::after {
+    display: none !important;
   }
 
   /* Hide non-printable interactive elements */
@@ -325,21 +369,77 @@ h1, h2, h3, h4, h5, h6 {
     box-shadow: none !important;
     backdrop-filter: none !important;
     padding: 0 !important;
-    margin-bottom: 1.2rem !important;
+    margin-bottom: 0.6rem !important;
+    transform: none !important;
+  }
+
+  /* Components set 2.5rem on screen in scoped styles */
+  .section-container {
+    padding: 0.5rem 0 !important;
+  }
+
+  .section-header {
+    margin-bottom: 0.45rem !important;
+    break-after: avoid;
   }
 
   .section-title {
-    font-size: 14pt !important;
-    color: #111827 !important;
-    border-bottom: 2px solid #0284c7;
-    padding-bottom: 3px;
-    margin-bottom: 10px !important;
+    font-size: 13pt !important;
+    color: #0f172a !important;
+    border-bottom: 1.5px solid #075985;
+    padding-bottom: 2px;
+    margin-bottom: 4px !important;
+    break-after: avoid;
+  }
+
+  .section-title svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .section-subtitle {
+    font-size: 9pt !important;
+    color: #334155 !important;
+    margin: 0 !important;
+  }
+
+  h1, h2, h3 {
+    break-after: avoid;
+  }
+
+  p {
+    orphans: 3;
+    widows: 3;
+  }
+
+  li {
+    break-inside: avoid;
   }
 
   .gradient-text {
     background: none !important;
     -webkit-text-fill-color: initial !important;
-    color: #0284c7 !important;
+    color: #075985 !important;
+  }
+
+  .tag {
+    font-size: 7.5pt !important;
+    padding: 0.05rem 0.35rem !important;
+    background: transparent !important;
+    border: 0.5pt solid #94a3b8 !important;
+    color: #1e293b !important;
+  }
+
+  .badge {
+    background: transparent !important;
+    border: 0.5pt solid #075985 !important;
+    color: #075985 !important;
+    font-size: 8pt !important;
+  }
+
+  a {
+    color: inherit !important;
+    text-decoration: none !important;
   }
 
   .print-break-inside-avoid {

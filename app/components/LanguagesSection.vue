@@ -217,4 +217,46 @@ const languages = cvData.languages
     grid-template-columns: 1fr;
   }
 }
+
+@media print {
+  .languages-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+  }
+  .lang-card {
+    padding: 0 !important;
+    gap: 0.35rem;
+  }
+  .lang-flag-box {
+    width: 22px;
+    height: 16px;
+    box-shadow: none;
+    border: 0.5pt solid #d1d5db;
+  }
+  .lang-identity {
+    gap: 0.45rem;
+  }
+  .lang-name {
+    font-size: 10.5pt;
+  }
+  .lang-fluency-badge {
+    font-size: 7.5pt;
+    background: transparent;
+  }
+  .progress-labels {
+    font-size: 7.5pt;
+  }
+  .progress-bar-bg,
+  .progress-bar-fill {
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+  .progress-bar-bg {
+    height: 4px;
+    background: #e2e8f0;
+  }
+  .progress-bar-fill {
+    background: #075985;
+  }
+}
 </style>

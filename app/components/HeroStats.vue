@@ -328,8 +328,27 @@ onBeforeUnmount(() => {
 
 @media print {
   .stat-hint,
-  .steam-layer {
+  .steam-layer,
+  .joke-bubble {
     display: none;
+  }
+  .stats-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.5rem;
+    padding: 0.4rem 0;
+    border-color: #d1d5db;
+  }
+  .stat-interactive {
+    padding: 0;
+    margin: 0;
+    border: none;
+  }
+  .stat-value {
+    font-size: 14pt;
+    margin-bottom: 0.1rem;
+  }
+  .stat-label {
+    font-size: 8pt;
   }
 }
 </style>
