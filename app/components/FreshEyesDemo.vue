@@ -220,8 +220,9 @@ onBeforeUnmount(clear)
   font-size: 10px;
 }
 
+/* Extra left room so the numbered pins sit inside the page frame */
 .fe-page {
-  padding: 16px 18px 18px;
+  padding: 16px 18px 18px 26px;
 }
 
 .fe-page h1 {
@@ -520,9 +521,6 @@ onBeforeUnmount(clear)
 @media (max-width: 720px) {
   .fe {
     grid-template-columns: 1fr;
-  }
-  .fe-stage {
-    max-height: 300px;
   }
 }
 </style>
