@@ -302,8 +302,6 @@ export const cvData = {
     "I'd tell you a UDP joke, but you might not get it.",
     "I have a great joke about Jira, but it's still in the backlog.",
     "I'd make a joke about ISO 27001, but it has to be documented, reviewed and approved first.",
-    "German is my native language, so my variable names come out like userSessionTimeoutConfigurationManagerFactory.",
-    "My Korean is at 50%. Enough to order food, not enough to know what I ordered.",
     "Why do programmers prefer dark mode? Because light attracts bugs.",
     'A SQL query walks into a bar, goes up to two tables and asks: "Can I join you?"',
     "Knock knock. Race condition. Who's there?",
