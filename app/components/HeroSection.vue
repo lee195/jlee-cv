@@ -66,12 +66,7 @@
           </p>
 
           <!-- Quick Statistics Bar -->
-          <div class="stats-grid">
-            <div v-for="(stat, index) in stats" :key="index" class="stat-card">
-              <span class="stat-value gradient-text">{{ stat.value }}</span>
-              <span class="stat-label">{{ stat.label }}</span>
-            </div>
-          </div>
+          <HeroStats :stats="stats" />
 
           <!-- Action CTAs -->
           <div class="hero-actions no-print">
@@ -155,6 +150,7 @@
 <script setup lang="ts">
   import { cvData } from "~/data/cvData";
   import PokemonProfileCard from "~/components/PokemonProfileCard.vue";
+  import HeroStats from "~/components/HeroStats.vue";
 
   const personal = cvData.personal;
   const stats = cvData.stats;
@@ -291,37 +287,6 @@
     line-height: 1.7;
   }
 
-  .stats-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1rem;
-    padding: 1.25rem 0;
-    border-top: 1px solid var(--border-color);
-    border-bottom: 1px solid var(--border-color);
-    margin-bottom: 1.5rem;
-  }
-
-  .stat-card {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-
-  .stat-value {
-    font-family: var(--font-heading);
-    font-size: 1.65rem;
-    font-weight: 800;
-    line-height: 1;
-    margin-bottom: 0.25rem;
-  }
-
-  .stat-label {
-    font-size: 0.825rem;
-    color: var(--text-secondary);
-    font-weight: 600;
-  }
-
   .hero-actions {
     display: flex;
     align-items: center;
@@ -348,10 +313,6 @@
   @media (max-width: 768px) {
     .hero-card {
       padding: 1.5rem;
-    }
-    .stats-grid {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1rem;
     }
     .hero-actions {
       flex-direction: column;
