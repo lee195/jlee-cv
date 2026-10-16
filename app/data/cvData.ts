@@ -1,3 +1,24 @@
+export interface Stat {
+  label: string;
+  value: string;
+  /** Optional interactive behaviour for the hero stats row */
+  kind?: "coffee" | "jokes";
+}
+
+export interface RaceLane {
+  label: string;
+  /** Simulated duration in minutes (use the midpoint for ranges) */
+  minutes: number;
+  /** What's printed at the end of the bar, e.g. "1–2 h" */
+  display: string;
+  note?: string;
+}
+
+export interface MetricRace {
+  title: string;
+  lanes: RaceLane[];
+}
+
 export interface Experience {
   id: string;
   role: string;
@@ -8,6 +29,7 @@ export interface Experience {
   description: string;
   highlights: string[];
   technologies: string[];
+  race?: MetricRace;
 }
 
 export interface Project {
@@ -62,8 +84,22 @@ export const cvData = {
   stats: [
     { label: "years experience", value: "7+" },
     { label: "projects", value: "4" },
-    { label: "cups of coffee", value: String(250 * 2 * 7) + "+" },
-    { label: "bad jokes", value: "many" },
+    { label: "cups of coffee", value: String(250 * 2 * 7), kind: "coffee" },
+    { label: "bad jokes", value: "many", kind: "jokes" },
+  ] as Stat[],
+  jokes: [
+    "I'd tell you a UDP joke, but you might not get it.",
+    "I have a great joke about Jira, but it's still in the backlog.",
+    "I'd make a joke about ISO 27001, but it has to be documented, reviewed and approved first.",
+    "German is my native language, so my variable names come out like userSessionTimeoutConfigurationManagerFactory.",
+    "My Korean is at 50%. Enough to order food, not enough to know what I ordered.",
+    "Why do programmers prefer dark mode? Because light attracts bugs.",
+    "A SQL query walks into a bar, goes up to two tables and asks: \"Can I join you?\"",
+    "Knock knock. Race condition. Who's there?",
+    "There are 10 kinds of people: those who understand binary and those who don't.",
+    "How many developers does it take to change a light bulb? None, that's a hardware problem.",
+    "It works on my machine. Fine, then we'll ship your machine. And that's how Docker was born.",
+    "I asked a pentester for a joke. He said he'd get back to me once he found a way in.",
   ],
   experiences: [
     {
@@ -81,6 +117,13 @@ export const cvData = {
         "Optimized database architecture and data synchronization reducing operational cost by 60%",
         "Communicated with internal customers and stakeholders to understand their needs and requirements and translated them into technical specifications",
       ],
+      race: {
+        title: "Time to a fully provisioned demo",
+        lanes: [
+          { label: "Before", minutes: 90, display: "1–2 h", note: "80% success" },
+          { label: "Now", minutes: 15, display: "15 min", note: "95% success" },
+        ],
+      },
       technologies: [
         "TypeScript",
         "React",
