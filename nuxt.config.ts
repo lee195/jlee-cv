@@ -11,7 +11,9 @@ export default defineNuxtConfig({
         { charset: 'utf-8' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
         { name: 'description', content: 'Professional CV and Portfolio of Jisu Lee, Senior Full Stack & Software Engineer specializing in Vue, Nuxt, TypeScript, Node.js, and Cloud Architecture.' },
-        { name: 'theme-color', content: '#0a0d14' }
+        { name: 'theme-color', content: '#0a0d14' },
+        // Nothing to see here. (Or is there? See the devtools console.)
+        { name: 'cv-build', content: 'Skx7ZW5jMGRpbmdfMXNfbjB0X2VuY3J5cHRpMG59' }
       ],
       link: [
         { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' }
