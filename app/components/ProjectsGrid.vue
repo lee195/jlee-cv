@@ -12,7 +12,17 @@
 
     <!-- Projects Grid -->
     <div class="projects-grid">
-      <div v-for="proj in filteredProjects" :key="proj.id" class="glass-card project-card print-break-inside-avoid">
+      <div
+        v-for="proj in cvData.projects"
+        :key="proj.id"
+        class="glass-card project-card print-break-inside-avoid"
+        :class="{ 'has-showcase': proj.showcase }"
+        :tabindex="proj.showcase ? 0 : undefined"
+        :aria-label="proj.showcase ? `${proj.title}: open case study` : undefined"
+        @click="onCardClick($event, proj)"
+        @keydown.enter.self="openId = proj.id"
+        @keydown.space.self.prevent="openId = proj.id"
+      >
         <div class="project-top">
           <div class="category-badge">{{ proj.category }}</div>
         </div>
@@ -49,20 +59,34 @@
         </div>
       </div>
     </div>
+
+    <ProjectShowcaseModal :project="openProject" @close="openId = null" />
   </section>
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from 'vue'
-import { cvData } from '~/data/cvData'
+import { ref, computed, onMounted, onBeforeUnmount } from 'vue'
+import { cvData, type Project } from '~/data/cvData'
+import ProjectShowcaseModal from '~/components/ProjectShowcaseModal.vue'
 
-const activeCategory = ref('All')
-const categories = ['All', 'Full Stack', 'Frontend', 'AI & Tools']
+const openId = ref<string | null>(null)
+const openProject = computed(() => cvData.projects.find(p => p.id === openId.value) ?? null)
 
-const filteredProjects = computed(() => {
-  if (activeCategory.value === 'All') return cvData.projects
-  return cvData.projects.filter(p => p.category === activeCategory.value)
-})
+/** Whole card is a big click target for mouse users; links and buttons inside keep their own behaviour. */
+function onCardClick(e: MouseEvent, proj: Project) {
+  if (!proj.showcase) return
+  if ((e.target as HTMLElement).closest('a, button')) return
+  openId.value = proj.id
+}
+
+/** `open <project>` from the ⌘K terminal */
+function onOpenEvent(e: Event) {
+  const id = (e as CustomEvent<string>).detail
+  if (cvData.projects.some(p => p.id === id && p.showcase)) openId.value = id
+}
+
+onMounted(() => window.addEventListener('cv:open-project', onOpenEvent))
+onBeforeUnmount(() => window.removeEventListener('cv:open-project', onOpenEvent))
 </script>
 
 <style scoped>
@@ -70,37 +94,6 @@ const filteredProjects = computed(() => {
   padding: 2.5rem 0;
 }
 
-.filter-tabs {
-  display: flex;
-  gap: 0.5rem;
-  margin-bottom: 1.5rem;
-  flex-wrap: wrap;
-}
-
-.filter-btn {
-  padding: 0.45rem 1rem;
-  border-radius: var(--radius-full);
-  background: var(--bg-card);
-  border: 1px solid var(--border-color);
-  color: var(--text-secondary);
-  font-family: var(--font-heading);
-  font-weight: 600;
-  font-size: 0.875rem;
-  cursor: pointer;
-  transition: all var(--transition-fast);
-}
-
-.filter-btn:hover {
-  color: var(--text-primary);
-  border-color: var(--border-accent);
-}
-
-.filter-btn.active {
-  background: var(--gradient-accent);
-  color: #ffffff;
-  border-color: transparent;
-  box-shadow: var(--shadow-glow);
-}
 
 .projects-grid {
   display: grid;
@@ -112,6 +105,22 @@ const filteredProjects = computed(() => {
   padding: 1.5rem;
   display: flex;
   flex-direction: column;
+}
+
+/* Clickable cards get an accent border so they read as "there's more here" */
+.project-card.has-showcase {
+  cursor: pointer;
+  border-color: color-mix(in srgb, var(--accent-teal) 55%, transparent);
+}
+
+.project-card.has-showcase:hover,
+.project-card.has-showcase:focus-visible {
+  border-color: var(--accent-teal);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent-teal) 20%, transparent), var(--shadow-md);
+}
+
+.project-card.has-showcase:focus-visible {
+  outline: none;
 }
 
 .project-top {
@@ -133,15 +142,6 @@ const filteredProjects = computed(() => {
   border: 1px solid #0284c7;
 }
 
-.featured-tag {
-  font-size: 0.75rem;
-  font-weight: 600;
-  color: #fbbf24;
-  background: rgba(251, 191, 36, 0.12);
-  padding: 0.15rem 0.5rem;
-  border-radius: var(--radius-sm);
-  border: 1px solid rgba(251, 191, 36, 0.25);
-}
 
 .project-title {
   font-size: 1.2rem;
@@ -184,23 +184,26 @@ const filteredProjects = computed(() => {
 
 .project-footer {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: flex-end;
   border-top: 1px solid var(--border-color);
   padding-top: 0.9rem;
-  gap: 0.5rem;
+  gap: 0.75rem 0.5rem;
 }
 
 .project-tech {
   display: flex;
   flex-wrap: wrap;
   gap: 0.35rem;
+  flex: 1 1 60%;
 }
 
 .project-links {
   display: flex;
   gap: 0.4rem;
   flex-shrink: 0;
+  margin-left: auto;
 }
 
 .icon-link {

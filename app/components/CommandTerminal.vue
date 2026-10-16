@@ -111,6 +111,7 @@ const COMMANDS: Record<string, { help: string; run: (args: string[]) => void | P
         proj.highlights.forEach(h => print(`  - ${h}`))
         print(`  ${proj.technologies.join(', ')}`)
         if (proj.github) print(`  ${proj.github}`)
+        if (proj.showcase) print(`  → open ${slug(proj.title)}`)
         return
       }
       if (what.startsWith('exp')) {
@@ -125,6 +126,18 @@ const COMMANDS: Record<string, { help: string; run: (args: string[]) => void | P
         return
       }
       err(`cat: ${what}: no such file`)
+    },
+  },
+  open: {
+    help: 'open <project>   project case study',
+    run: ([what]) => {
+      if (!what) return err('open: which project? try: open ' + Object.keys(projects)[0])
+      const proj = projects[slug(what)]
+      if (!proj) return err(`open: ${what}: no such project`)
+      if (!proj.showcase) return err(`open: ${what}: nothing to show yet`)
+      close()
+      window.dispatchEvent(new CustomEvent('cv:open-project', { detail: proj.id }))
+      ok(`opened ${proj.title}`)
     },
   },
   cd: {
@@ -254,7 +267,7 @@ function complete() {
     if (match.length === 1) draft.value = match[0] + ' '
     return
   }
-  const pool = name === 'cd' ? SECTIONS : name === 'cat' ? [...Object.keys(projects), 'experience', 'languages'] : name === 'ls' ? ['projects', 'experience'] : []
+  const pool = name === 'cd' ? SECTIONS : name === 'cat' ? [...Object.keys(projects), 'experience', 'languages'] : name === 'open' ? Object.keys(projects) : name === 'ls' ? ['projects', 'experience'] : []
   const match = pool.filter(p => p.startsWith(arg))
   if (match.length === 1) draft.value = `${name} ${match[0]}`
 }
