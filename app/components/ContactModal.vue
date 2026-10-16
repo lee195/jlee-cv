@@ -29,9 +29,18 @@
             <span class="quick-label">Email</span>
             <div class="quick-row">
               <span class="quick-value">{{ email }}</span>
-              <button @click="copyEmail" class="btn btn-secondary btn-sm">
-                {{ copied ? 'Copied!' : 'Copy' }}
-              </button>
+              <div class="quick-actions">
+                <a :href="mailtoHref" class="btn btn-primary btn-sm">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                    <line x1="22" y1="2" x2="11" y2="13"></line>
+                    <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                  </svg>
+                  Send email
+                </a>
+                <button @click="copyEmail" class="btn btn-secondary btn-sm">
+                  {{ copied ? 'Copied!' : 'Copy' }}
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -48,6 +57,7 @@ const props = defineProps<{ isOpen: boolean }>()
 const emit = defineEmits(['close'])
 
 const email = cvData.personal.email
+const mailtoHref = `mailto:${email}`
 const copied = ref(false)
 const sending = ref(false)
 const sent = ref(false)
@@ -192,7 +202,15 @@ function handleSubmit() {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
   margin-top: 0.25rem;
+}
+
+.quick-actions {
+  display: flex;
+  gap: 0.5rem;
+  flex-shrink: 0;
 }
 
 .quick-value {
