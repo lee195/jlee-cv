@@ -37,6 +37,8 @@
 
           <p class="exp-description">{{ exp.description }}</p>
 
+          <MetricRace v-if="exp.race" :race="exp.race" />
+
           <ul class="exp-highlights">
             <li v-for="(highlight, hIndex) in exp.highlights" :key="hIndex">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="check-icon" aria-hidden="true" focusable="false">
@@ -57,6 +59,7 @@
 
 <script setup lang="ts">
 import { cvData } from '~/data/cvData'
+import MetricRace from '~/components/MetricRace.vue'
 
 const experiences = cvData.experiences
 </script>
