@@ -4,11 +4,17 @@
       <div class="hero-layout">
         <!-- Hero Details Column -->
         <div class="hero-details">
-          <img :src="personal.avatar" alt="" width="104" height="104" class="print-photo print-only">
-          <div class="status-badge" aria-hidden="true">
+          <img
+            :src="personal.avatar"
+            alt=""
+            width="104"
+            height="104"
+            class="print-photo print-only"
+          />
+          <!-- <div class="status-badge" aria-hidden="true">
             <span class="pulse-dot"></span>
             <span>{{ personal.status }}</span>
-          </div>
+          </div> -->
 
           <h1 class="hero-name">
             {{ personal.name }}
@@ -61,7 +67,7 @@
               <span>{{ personal.email }}</span>
             </a>
             <span v-if="personal.github" class="meta-item print-only">
-              {{ personal.github.replace(/^https?:\/\//, '') }}
+              {{ personal.github.replace(/^https?:\/\//, "") }}
             </span>
           </div>
 
